@@ -19,20 +19,14 @@ sudo apt-get install -y libssl-dev libffi-dev
 sudo useradd -p taiga -m -d /home/taiga taiga
 sudo adduser taiga sudo
 sudo bash -c 'echo "taiga ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers'
-
-mkdir /home/taiga/.ssh
-ssh-keygen -e -m RFC4716 -f 30.12.2020___mail@mail.com.pem > pub
-echo pub > /home/taiga/.ssh/authorized_keys
-chmod 600 /home/taiga/.ssh/authorized_keys
-chmod 700 /home/taiga/.ssh/
-chown -R taiga:taiga /home/taiga/.ssh/
+sudo cp -a /home/ubuntu/.ssh/ /home/taiga/.ssh/
+sudo chmod 600 /home/taiga/.ssh/authorized_keys
+sudo chmod 700 /home/taiga/.ssh/
+sudo chown -R taiga:taiga /home/taiga/.ssh/
 
 sudo chmod 777 /home/ubuntu/install.sh
 sudo chmod 777 /home/ubuntu/http.sh
 sudo chmod 777 /home/ubuntu/var.sh
-
-#-----------------------------------Install-----------------------------------------------------------
-#sudo su taiga -c ./http.sh
 
 #-----------------------------------Finish------------------------------------------------------------
 #echo Enter http://$DOMAIN/

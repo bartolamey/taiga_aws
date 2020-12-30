@@ -45,16 +45,14 @@ time.sleep(1)
 
 #--------------Copy sh----------------------------------------------------------------------------------------------
 os.system('chmod 400 ' + keypair_name)
+os.system('sed -i \'s/export DOMAIN=/export DOMAIN=\"' + new_instance[0].public_dns_name + '\"/\' var.sh')
+os.system('cat var.sh')
+
 os.system('scp -i ' + keypair_name + ' -o StrictHostKeyChecking=no install.sh ubuntu@' + new_instance[0].public_dns_name + ':/home/ubuntu')
-os.system('scp -i ' + keypair_name + ' -o StrictHostKeyChecking=no http.sh ubuntu@' + new_instance[0].public_dns_name + ':/home/ubuntu')
 os.system('scp -i ' + keypair_name + ' -o StrictHostKeyChecking=no var.sh ubuntu@' + new_instance[0].public_dns_name + ':/home/ubuntu')
-os.system('ssh -i ' + keypair_name + ' -o StrictHostKeyChecking=no ubuntu@' + new_instance[0].public_dns_name +  ' bash install.sh')
-#os.system('ssh -i ' + keypair_name + ' -o StrictHostKeyChecking=no ubuntu@' + new_instance[0].public_dns_name +  ' sudo -su taiga ./http.sh')
+os.system('ssh -i ' + keypair_name + ' -o StrictHostKeyChecking=no ubuntu@' + new_instance[0].public_dns_name +  ' bash ./install.sh')
 
-#scp -i 29.12.2020___mail@mail.com.pem install.sh ubuntu@3.22.166.179:/home/ubuntu
-#scp -i 29.12.2020___mail@mail.com.pem http.sh ubuntu@3.22.166.179:/home/ubuntu
-#ssh -i 29.12.2020___mail@mail.com.pem ubuntu@3.22.166.179 'sudo su taiga ./http.sh'
-
-
-#os.system('ssh -i ' + keypair_name + ' -o StrictHostKeyChecking=no ubuntu@' + new_instance[0].public_dns_name +  'echo taiga | sudo -S -H -u taiga -c 'bash http.sh')
+os.system('scp -i ' + keypair_name + ' -o StrictHostKeyChecking=no http.sh taiga@' + new_instance[0].public_dns_name + ':/home/taiga')
+os.system('scp -i ' + keypair_name + ' -o StrictHostKeyChecking=no var.sh taiga@' + new_instance[0].public_dns_name + ':/home/taiga')
+os.system('ssh -i ' + keypair_name + ' -o StrictHostKeyChecking=no taiga@' + new_instance[0].public_dns_name +  ' bash ./http.sh')
 
