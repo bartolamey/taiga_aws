@@ -227,7 +227,7 @@ sudo systemctl restart nginx
 
 #------------------------------------------------------------------------------------------------------------
 sudo sed -i 's|^taiga.*||g' /etc/sudoers
-
+echo Enter http://$DOMAIN/
 
 
 

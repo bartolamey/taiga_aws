@@ -24,9 +24,7 @@ sudo chmod 600 /home/taiga/.ssh/authorized_keys
 sudo chmod 700 /home/taiga/.ssh/
 sudo chown -R taiga:taiga /home/taiga/.ssh/
 
-sudo chmod 777 /home/ubuntu/install.sh
-sudo chmod 777 /home/ubuntu/http.sh
-sudo chmod 777 /home/ubuntu/var.sh
+#sudo chmod 777 /home/ubuntu/install.sh
+#sudo chmod 777 /home/ubuntu/http.sh
+#sudo chmod 777 /home/ubuntu/var.sh
 
-#-----------------------------------Finish------------------------------------------------------------
-#echo Enter http://$DOMAIN/
