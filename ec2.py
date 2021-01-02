@@ -12,7 +12,7 @@ email_send   = 'mail@mail.com'
 
 #---------------Создаём ключ доступа------------------------------------------------------------------------------
 #to_day       = datetime.datetime.today().strftime("%d.%m.%Y_")
-keypair_name = datetime.datetime.today().strftime("%d.%m.%Y___") + email_send  + '.pem'
+keypair_name = datetime.datetime.today().strftime("%d.%m.%Y_%H:%M_") + email_send  + '.pem'
 new_keypair  = ec2.create_key_pair(KeyName=keypair_name)
 with open(keypair_name, 'w') as file:
     file.write(new_keypair.key_material)
